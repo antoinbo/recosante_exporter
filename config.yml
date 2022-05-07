@@ -1,0 +1,52 @@
+metrics:
+
+  - name: recosante_atmo_global_index_value
+    path: "{ .indice_atmo.indice.value }"
+    labels:
+      label: "Air quality"
+
+  - name: recosante_atmo_index
+    type: object
+    path: "{ .indice_atmo.indice.details[0:] }"
+    labels:
+      label: "{ .label }"
+    values:
+      value: "{ .indice.value }"
+
+  - name: recosante_uv_global_index_value
+    path: "{ .indice_uv.indice.value }"
+    labels:
+      label: "UV"
+
+  - name: recosante_radon_global_index_value
+    path: "{ .potentiel_radon.indice.value }"
+    labels:
+      label: "Radon"
+
+  - name: recosante_raep_global_index_value
+    path: "{ .raep.indice.value }"
+    labels:
+      label: "Pollen"
+
+  - name: recosante_raep_index
+    type: object
+    path: "{ .raep.indice.details[0:] }"
+    labels:
+      label: "{ .label }"
+    values:
+      value: "{ .indice.value }"
+
+# Cannot export strings
+#  - name: recosante_weather_global_index_value
+#    path: "{ .vigilance_meteo.indice.color }"
+#    labels:
+#      label: "Weather index"
+
+# Cannot export strings
+#  - name: recosante_weather_index
+#    type: object
+#    path: "{ .vigilance_meteo.indice.details[0:] }"
+#    labels:
+#      label: "{ .label }"
+#    values:
+#      value: "{ .color }"
