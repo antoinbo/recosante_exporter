@@ -1,0 +1,10 @@
+version: "3.6"
+services:
+  recosante_exporter:
+    container_name: recosante_exporter
+    image: quay.io/prometheuscommunity/json-exporter
+    restart: always
+    ports:
+      - "7979:7979"
+    volumes:
+      - ./config.yml:/config.yml
