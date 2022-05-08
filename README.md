@@ -39,6 +39,8 @@ docker-compose up -d
 
 Open the Grafana console on your web browser: https://localhost:3000/
 
+![Dashboard example](screenshot.png)
+
 Command to end the demo:
 ```sh
 docker-compose down
