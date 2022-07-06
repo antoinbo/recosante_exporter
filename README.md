@@ -1,5 +1,8 @@
 # recosante_exporter
 
+Polls data from [Recosanté](ttps://recosante.beta.gouv.fr/) and stores them into Prometheus.
+Collected data can be displayed on a Grafana dashboard.
+
 ## Quickstart
 
 Commands to start the exporter:
@@ -24,6 +27,22 @@ scrape_configs:
       target: ["https://api.recosante.beta.gouv.fr/v1/?insee=75056&show_raep=true&show_indice_uv=true"]
     static_configs:
       - targets: ["recosante_exporter:7979"]
+```
+
+The `insee` argument must be replaced by your own city code (French cities only).
+It can be found in the URL: https://api.recosante.beta.gouv.fr/v1/?insee=**<75056>**&show_raep=true&show_indice_uv=true
+
+The following API can be called to retrieve your city's Insee code:
+```sh
+curl -s "https://geo.api.gouv.fr/communes?&boost=population&limit=10&fields=nom,code&nom=Paris" | jq '.[] | [.code, .nom] | join(" <-- ")'
+# "75056 <-- Paris"
+# "81202 <-- Parisot"
+# "82137 <-- Parisot"
+# "95176 <-- Cormeilles-en-Parisis"
+# "38485 <-- Seyssinet-Pariset"
+# "95241 <-- Fontenay-en-Parisis"
+# "71343 <-- Paris-l'Hôpital"
+# "62826 <-- Le Touquet-Paris-Plage"
 ```
 
 ## Demo with Prometheus + Grafana
